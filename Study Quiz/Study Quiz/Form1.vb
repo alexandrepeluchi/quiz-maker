@@ -37,8 +37,25 @@ Public Class Form1
         End Try
     End Sub
 
+    Private Sub CriaTabelaImagem()
+        Try
+            objBD.AbrirConexao(conexao)
+            Try
+                instrucao = "CREATE TABLE IF NOT EXISTS Imagem(CodQuestao INTEGER AUTO_INCREMENT PRIMARY KEY, " +
+                            "CaminhoImagem VARCHAR(100))"
+                objBD.ExecutaSQL(conexao, instrucao)
+            Catch ex As Exception
+                MessageBox.Show("Erro no SQL")
+            End Try
+            objBD.FecharConexao(conexao)
+        Catch ex As Exception
+            MessageBox.Show("Erro na Conexão")
+        End Try
+    End Sub
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CriaTabelaMateria()
         CriaTabelaQuestao()
+        CriaTabelaImagem()
     End Sub
 End Class
