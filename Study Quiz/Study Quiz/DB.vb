@@ -14,13 +14,13 @@ Public Class DB
         conexao.Close()
     End Sub
 
-    Public Sub ExecutarSQL(ByVal conexao As MySqlConnection, ByVal instrucao As String)
+    Public Sub ExecutaSQL(ByVal conexao As MySqlConnection, ByVal instrucao As String)
         comando.Connection = conexao
         comando.CommandText = instrucao
         comando.ExecuteNonQuery()
     End Sub
 
-    Public Function ExecutarSelect(ByVal conexao As MySqlConnection, ByVal instrucao As String) As MySqlDataReader
+    Public Function ExecutaSelect(ByVal conexao As MySqlConnection, ByVal instrucao As String) As MySqlDataReader
         comando.Connection = conexao
         comando.CommandText = instrucao
         armazena = comando.ExecuteReader()
