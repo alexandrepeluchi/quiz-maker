@@ -26,7 +26,23 @@ Public Class Form1
             objBD.AbrirConexao(conexao)
             Try
                 instrucao = "CREATE TABLE IF NOT EXISTS Questao(CodQuestao INTEGER AUTO_INCREMENT PRIMARY KEY, " +
-                            "CodMateria INTEGER, Enunciado VARCHAR(500), Alternativa1 VARCHAR(100), Alternativa2 VARCHAR(100), Alternativa3 VARCHAR(100), Alternativa4 VARCHAR(100))"
+                            "CodMateria INTEGER, Enunciado VARCHAR(500), Resposta VARCHAR(200))"
+                objBD.ExecutaSQL(conexao, instrucao)
+            Catch ex As Exception
+                MessageBox.Show("Erro no SQL")
+            End Try
+            objBD.FecharConexao(conexao)
+        Catch ex As Exception
+            MessageBox.Show("Erro na Conexão")
+        End Try
+    End Sub
+
+    Private Sub CriaTabelaAlternativas()
+        Try
+            objBD.AbrirConexao(conexao)
+            Try
+                instrucao = "CREATE TABLE IF NOT EXISTS Alternativas(CodAlternativa INTEGER AUTO_INCREMENT PRIMARY KEY, " +
+                            "CodMateria INTEGER, Resposta VARCHAR(200))"
                 objBD.ExecutaSQL(conexao, instrucao)
             Catch ex As Exception
                 MessageBox.Show("Erro no SQL")
@@ -56,6 +72,7 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CriaTabelaMateria()
         CriaTabelaQuestao()
+        CriaTabelaAlternativas()
         CriaTabelaImagem()
     End Sub
 End Class
