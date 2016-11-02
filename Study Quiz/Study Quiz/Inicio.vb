@@ -42,7 +42,7 @@ Public Class Inicio
             objBD.AbrirConexao(conexao)
             Try
                 instrucao = "CREATE TABLE IF NOT EXISTS Alternativas(CodAlternativa INTEGER AUTO_INCREMENT PRIMARY KEY, " +
-                            "CodMateria INTEGER, Resposta VARCHAR(200))"
+                            "CodQuestao INTEGER, Resposta VARCHAR(200))"
                 objBD.ExecutaSQL(conexao, instrucao)
             Catch ex As Exception
                 MessageBox.Show("Erro no SQL")
