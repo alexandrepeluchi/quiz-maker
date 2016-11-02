@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Public Class Form1
+Public Class Inicio
     Private conexao As New MySqlConnection
     Private objBD As New DB
     Private instrucao As String
@@ -74,5 +74,10 @@ Public Class Form1
         CriaTabelaQuestao()
         CriaTabelaAlternativas()
         CriaTabelaImagem()
+    End Sub
+
+    Private Sub btnIniciar_Click(sender As Object, e As EventArgs) Handles btnIniciar.Click
+        EscolhaMateria.Show()
+        Me.Hide()
     End Sub
 End Class
